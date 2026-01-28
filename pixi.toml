@@ -1,0 +1,22 @@
+[workspace]
+authors = ["nmarticorena <nicolas.marticorena.vidal@gmail.com>"]
+channels = ["conda-forge"] #, "nmarticorena"]
+name = "vuer"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+unitree_sub = { cmd = "python unitree_sub.py", description = "Run the Unitree subscriber example" }
+
+[dependencies]
+python = "3.10.*" # Version with pypi cyclonedds support
+matplotlib = ">=3.10.8,<4"
+numpy = ">=2.2.6,<3"
+
+[pypi-options]
+
+
+[pypi-dependencies]
+vuer = ">=0.0.79, <0.0.80"
+unitree_sdk2py = {path = "unitree_sdk2_python", editable = true}
+logging-mp = ">=0.1.6, <0.2"
