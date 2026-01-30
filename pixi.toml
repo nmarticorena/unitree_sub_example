@@ -7,6 +7,7 @@ version = "0.1.0"
 
 [tasks]
 unitree_sub = { cmd = "python unitree_sub.py", description = "Run the Unitree subscriber example" }
+generate_certs= {cmd = "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout key.pem -out cert.pem -subj '/CN=localhost'"}
 
 [dependencies]
 python = "3.10.*" # Version with pypi cyclonedds support

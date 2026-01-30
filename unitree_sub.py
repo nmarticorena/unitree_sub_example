@@ -8,6 +8,7 @@ from unitree_sdk2py.core.channel import ChannelFactoryInitialize
 import numpy as np
 import utils
 import pinocchio
+import pathlib
 
 from utils import urdf_movable_joint_names, all_joint_positions
 
@@ -21,9 +22,12 @@ robot_control = G1_29_ArmController(motion_mode = True,simulation_mode = True)
 robot_hand = Inspire_Controller_DFX()
 robot_model = pinocchio.buildModelFromUrdf(URDF_PATH, mimic = True)
 
-app = Vuer()
+key_path = pathlib.Path(__file__).parent / "key.pem"
+cert_path = pathlib.Path(__file__).parent / "cert.pem"
+app = Vuer(host = "0.0.0.0", port = 8012)
+app.cert = cert_path
+app.key = key_path
 
-breakpoint()
 @app.spawn(start=True)
 async def main(sess):
     sess.set @ DefaultScene(
