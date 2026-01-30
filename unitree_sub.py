@@ -32,7 +32,7 @@ app.key = key_path
 async def main(sess):
     sess.set @ DefaultScene(
         bgChildren=[OrbitControls(key="OrbitControls")],
-        up=[0, 0, 1],
+        up=[0, 1, 0],
     )
 
 
@@ -52,7 +52,8 @@ async def main(sess):
         sess.upsert @ Urdf(
             src=URDF_URL,
             jointValues=jointvals,
-            key = "robot"
+            key = "robot",
+            position=[0.0, 1.5, -1.2],   # move robot instead of VR camera (tune axes)
         )
 
         await asyncio.sleep(0.1)
